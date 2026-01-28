@@ -1,0 +1,24 @@
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./be
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./fe
+    ports:
+      - "5000:5000"
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:

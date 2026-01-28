@@ -1,0 +1,11 @@
+- name: Deploy Car Rental App
+  hosts: localhost
+  tasks:
+    - name: Apply Mongo
+      command: kubectl apply -f k8s/mongo.yaml
+
+    - name: Apply Backend
+      command: kubectl apply -f k8s/be.yaml
+
+    - name: Apply Frontend
+      command: kubectl apply -f k8s/fe.yaml
